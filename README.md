@@ -1,3 +1,6 @@
+https://schooling-server.vercel.app/courses
+https://schooling-server.vercel.app/course/id/{id}
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
