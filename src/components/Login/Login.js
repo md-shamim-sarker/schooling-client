@@ -8,11 +8,11 @@ const Login = () => {
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid" data-bitwarden-watching="1">
                 <div className="space-y-1 text-sm">
-                    <label for="username" className="block text-gray-400">Email</label>
+                    <label htmlFor="username" className="block text-gray-400">Email</label>
                     <input type="email" name="username" id="username" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-600 focus:border-violet-400" />
                 </div>
                 <div className="space-y-1 text-sm">
-                    <label for="password" className="block text-gray-400">Password</label>
+                    <label htmlFor="password" className="block text-gray-400">Password</label>
                     <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-600 focus:border-violet-400" />
                     <div className="flex justify-end text-xs text-gray-400">
                         <NavLink to={"/"}>Forgot Password?</NavLink>
