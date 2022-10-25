@@ -1,9 +1,10 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 const Errorpage = () => {
     return (
         <div>
-            Error page
+
         </div>
     );
 };
