@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Sidenav = () => {
+const SideNav = () => {
     return (
         <div>
-            Sidenav page
+            SideNav page
         </div>
     );
 };
 
-export default Sidenav;
+export default SideNav;

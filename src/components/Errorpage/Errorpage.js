@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Navbar = () => {
+const Errorpage = () => {
     return (
         <div>
-            Navbar page
+            Error page
         </div>
     );
 };
 
-export default Navbar;
+export default Errorpage;
