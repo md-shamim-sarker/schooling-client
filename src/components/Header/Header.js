@@ -38,7 +38,7 @@ const Header = () => {
                         </span>
                     </label>
                     <button className=''>
-                        <NavLink to={"/"} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline'>Login</NavLink>
+                        <NavLink to={"/login"} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline'>Login</NavLink>
                     </button>
 
                     {/* Drawer for mobile device */}
