@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div className="w-11/12 lg:w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-600 my-10">
+        <div className="w-11/12 lg:w-full mx-auto max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-600 my-5 lg:my-10">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid" data-bitwarden-watching="1">
                 <div className="space-y-1 text-sm">
