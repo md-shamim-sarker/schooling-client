@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <div className='bg-blue-100 py-1'>
-            <div className='w-full px-2 py-2 lg:w-4/5 mx-auto flex items-center justify-between'>
+            <div className='w-full px-2 py-2 lg:w-11/12 mx-auto flex items-center justify-between'>
                 <div className='flex items-center gap-x-1 lg:gap-x-3'>
                     <img src={logo} alt="logo" className='w-10 lg:w-16' />
                     <h1 className='text-base lg:text-2xl font-bold'>SCHOOLING.COM</h1>
@@ -42,25 +42,27 @@ const Header = () => {
                     </button>
 
                     {/* Drawer for mobile device */}
-                    <ButtonToolbar>
-                        <IconButton icon={<FaBars />} onClick={() => handleOpen('right')}>
-                        </IconButton>
-                    </ButtonToolbar>
-                    <Drawer size={size} placement={placement} open={open} onClose={() => setOpen(false)}>
-                        <Drawer.Header>
-                            <Drawer.Title>
-                                <span className='text-lg'>SCHOOLING.COM</span>
-                            </Drawer.Title>
-                        </Drawer.Header>
-                        <Drawer.Body>
-                            <div>
-                                <NavLink to={"/home"} className="hover:underline-offset-4">Home</NavLink> <hr />
-                                <NavLink to={"/courses"} className="hover:underline-offset-4">Courses</NavLink><hr />
-                                <NavLink to={"/faq"} className="hover:underline-offset-4">FAQ</NavLink> <hr />
-                                <NavLink to={"/blog"} className="hover:underline-offset-4">Blog</NavLink> <hr />
-                            </div>
-                        </Drawer.Body>
-                    </Drawer>
+                    <div className='lg:hidden'>
+                        <ButtonToolbar>
+                            <IconButton icon={<FaBars />} onClick={() => handleOpen('right')}>
+                            </IconButton>
+                        </ButtonToolbar>
+                        <Drawer size={size} placement={placement} open={open} onClose={() => setOpen(false)}>
+                            <Drawer.Header>
+                                <Drawer.Title>
+                                    <span className='text-lg'>SCHOOLING.COM</span>
+                                </Drawer.Title>
+                            </Drawer.Header>
+                            <Drawer.Body>
+                                <div>
+                                    <NavLink to={"/home"} className="hover:underline-offset-4">Home</NavLink> <hr />
+                                    <NavLink to={"/courses"} className="hover:underline-offset-4">Courses</NavLink><hr />
+                                    <NavLink to={"/faq"} className="hover:underline-offset-4">FAQ</NavLink> <hr />
+                                    <NavLink to={"/blog"} className="hover:underline-offset-4">Blog</NavLink> <hr />
+                                </div>
+                            </Drawer.Body>
+                        </Drawer>
+                    </div>
                 </div>
             </div>
         </div>
