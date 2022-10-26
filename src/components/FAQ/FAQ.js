@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const FAQ = () => {
     return (
         <section className="bg-blue-50 text-gray-600">

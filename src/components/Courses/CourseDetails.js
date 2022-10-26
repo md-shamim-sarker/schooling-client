@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {createRef} from 'react';
 import {NavLink, useLoaderData} from 'react-router-dom';
+import Pdf from "react-to-pdf";
+
+const ref = createRef();
 
 const CourseDetails = () => {
     const course = useLoaderData();
     const {id, image, title, brief, details, features} = course;
+
+    const options = {
+        orientation: 'landscape',
+        unit: 'in',
+        format: [16, 10]
+    };
+
     return (
         <div>
             <section
@@ -39,18 +49,21 @@ const CourseDetails = () => {
                                 Get Premium
                             </NavLink>
 
-                            <NavLink
-                                to={"/"}
+                            <div
+
                                 className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
                             >
-                                Download Course Details
-                            </NavLink>
+
+                                <Pdf targetRef={ref} filename="course_details.pdf" options={options}>
+                                    {({toPdf}) => <button onClick={toPdf}>Download Course Details</button>}
+                                </Pdf>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div className='w-4/5 mx-auto my-10'>
+            <div ref={ref} className='w-4/5 mx-auto my-10'>
                 <h3>Course Details:</h3><hr />
                 <p>{details}</p>
             </div>
