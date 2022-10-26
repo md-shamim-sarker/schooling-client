@@ -1,10 +1,23 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from '../../assets/logo.png';
-import {FaBars, FaMoon, FaSun} from 'react-icons/fa';
-import {Drawer, ButtonToolbar, IconButton} from 'rsuite';
+import {FaBars, FaMoon, FaSignOutAlt, FaSun} from 'react-icons/fa';
+import {Drawer, ButtonToolbar, IconButton, Button} from 'rsuite';
+import {AuthContext} from '../../contexts/UserContext';
 
 const Header = () => {
+    const {user, logOut, setUser} = useContext(AuthContext);
+    console.log(user);
+
+    const logOutHandler = () => {
+        logOut()
+            .then(() => {
+                setUser(null);
+            }).catch((error) => {
+                console.log(error);
+            });
+    };
+
     const size = 'full';
     const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState();
@@ -37,9 +50,20 @@ const Header = () => {
                             <FaMoon className='text-white'></FaMoon>
                         </span>
                     </label>
-                    <button className=''>
-                        <NavLink to={"/login"} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline'>Login</NavLink>
-                    </button>
+
+                    {
+                        user?.uid
+                            ? <img src={user.photoURL} alt="user_photo" className='w-8 h-8 rounded-full' title={user.displayName} />
+                            : ""
+                    }
+
+                    {
+                        user?.uid
+                            ? <Button onClick={logOutHandler} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline' title="Logout">
+                                <FaSignOutAlt></FaSignOutAlt>
+                            </Button>
+                            : <NavLink to={"/login"} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline'>Login</NavLink>
+                    }
 
                     {/* Drawer for mobile device */}
                     <div className='lg:hidden'>

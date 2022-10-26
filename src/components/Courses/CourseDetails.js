@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink, useLoaderData} from 'react-router-dom';
+import SideNav from './SideNav';
 
 const CourseDetails = () => {
     const course = useLoaderData();
@@ -17,7 +18,9 @@ const CourseDetails = () => {
                     className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
                 >
                     <div className="max-w-xl text-center sm:text-left">
-                        <img src={image.logo} alt="logo" className='w-36 h-36' />
+                        <div className='flex justify-center lg:justify-start my-7'>
+                            <img src={image.logo} alt="logo" className='w-36 h-36' />
+                        </div>
                         <h1 className="text-3xl font-extrabold sm:text-5xl">
                             You Choose
                             <strong className="block font-extrabold text-rose-700">
@@ -31,7 +34,7 @@ const CourseDetails = () => {
 
                         <div className="mt-8 flex flex-wrap gap-4 text-center">
                             <NavLink
-                                to={"/"}
+                                to={"/checkout"}
                                 className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                             >
                                 Get Premium
@@ -47,16 +50,29 @@ const CourseDetails = () => {
                     </div>
                 </div>
             </section>
-            <div className='w-4/5 mx-auto my-10'>
-                <h3>Course Details:</h3><hr />
-                <p>{details}</p>
-            </div>
 
-            <div className='w-4/5 mx-auto my-10'>
-                <h3>Course Features:</h3> <hr />
-                {
-                    features.map(feature => <li>{feature}</li>)
-                }
+            <div className='flex'>
+                <div className='w-3/4'>
+                    <div className='w-4/5 mx-auto my-10'>
+                        <h3>Course Details:</h3><hr />
+                        <p>{details}</p>
+                    </div>
+                    <div className='w-4/5 mx-auto my-10'>
+                        <h3>Course Features:</h3> <hr />
+                        {
+                            features.map((feature, index) => <li key={index}>{feature}</li>)
+                        }
+                    </div>
+                </div>
+                <div className='w-full lg:w-1/4 border-r text-lg'>
+                    <h2>Courses Link</h2><hr />
+                    {/* {
+                        courses.map(course => <SideNav
+                            key={course.id}
+                            course={course}
+                        ></SideNav>)
+                    } */}
+                </div>
             </div>
         </div>
     );
