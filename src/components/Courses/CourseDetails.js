@@ -1,10 +1,9 @@
 import React from 'react';
 import {NavLink, useLoaderData} from 'react-router-dom';
-import SideNav from './SideNav';
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const {image, title, brief, details, features} = course;
+    const {id, image, title, brief, details, features} = course;
     return (
         <div>
             <section
@@ -34,7 +33,7 @@ const CourseDetails = () => {
 
                         <div className="mt-8 flex flex-wrap gap-4 text-center">
                             <NavLink
-                                to={"/checkout"}
+                                to={`/checkout/id/${id}`}
                                 className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                             >
                                 Get Premium
@@ -51,28 +50,16 @@ const CourseDetails = () => {
                 </div>
             </section>
 
-            <div className='flex'>
-                <div className='w-3/4'>
-                    <div className='w-4/5 mx-auto my-10'>
-                        <h3>Course Details:</h3><hr />
-                        <p>{details}</p>
-                    </div>
-                    <div className='w-4/5 mx-auto my-10'>
-                        <h3>Course Features:</h3> <hr />
-                        {
-                            features.map((feature, index) => <li key={index}>{feature}</li>)
-                        }
-                    </div>
-                </div>
-                <div className='w-full lg:w-1/4 border-r text-lg'>
-                    <h2>Courses Link</h2><hr />
-                    {/* {
-                        courses.map(course => <SideNav
-                            key={course.id}
-                            course={course}
-                        ></SideNav>)
-                    } */}
-                </div>
+            <div className='w-4/5 mx-auto my-10'>
+                <h3>Course Details:</h3><hr />
+                <p>{details}</p>
+            </div>
+
+            <div className='w-4/5 mx-auto my-10'>
+                <h3>Course Features:</h3> <hr />
+                {
+                    features.map((feature, index) => <li key={index}>{feature}</li>)
+                }
             </div>
         </div>
     );
