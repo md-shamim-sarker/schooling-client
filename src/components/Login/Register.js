@@ -1,11 +1,15 @@
 import React, {useContext, useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from '../../contexts/UserContext';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [message, setMessage] = useState("");
 
     const {createUser, updateUser, logOut, setUser, sendUserEmailVerification} = useContext(AuthContext);
+
+    const notify = () => toast("A confirmation mail send to your account. Please, confirm!!");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,7 +38,7 @@ const Register = () => {
                 });
 
                 sendUserEmailVerification().then(() => {
-                    alert("Check your email.");
+                    notify();
                 });
 
                 form.reset();
@@ -82,6 +86,7 @@ const Register = () => {
                 <span>Already have an account? </span>
                 <NavLink to={"/login"} className="underline text-gray-600">Sign in</NavLink>
             </p>
+            <ToastContainer />
         </div>
     );
 };

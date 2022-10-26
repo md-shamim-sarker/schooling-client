@@ -61,10 +61,10 @@ const Header = () => {
                         {
                             user?.uid
                                 ?
-                                <Button onClick={logOutHandler} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline' title="Logout">
+                                <Button onClick={logOutHandler} appearance="primary" title="Logout">
                                     Log Out
                                 </Button>
-                                : <NavLink to={"/login"} className='bg-blue-700 hover:bg-blue-600 text-blue-50 px-2 lg:px-4 py-[6.5px] lg:py-2 rounded-md hover:text-blue-50 hover:no-underline'>Login</NavLink>
+                                : <NavLink to={"/login"}><Button appearance='primary'>Login</Button></NavLink>
                         }
                     </div>
 

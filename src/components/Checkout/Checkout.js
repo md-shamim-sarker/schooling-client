@@ -22,14 +22,14 @@ const Checkout = () => {
             <h2 className='text-center my-5'>Checkout Page</h2>
             <div className='flex flex-col lg:flex-row gap-5 justify-between'>
                 <div className='w-full h-full flex flex-col justify-center items-center p-5'>
-                    <img src={image.thumbnail} alt="image_thumbnail" />
+                    <img src={image.thumbnail} alt="image_thumbnail" className='w-52 h-52' />
                     <h3>{title} <br /></h3>
                     <p className='my-5'>{brief}</p>
                     <Button onClick={alertHandler} appearance='primary'>Buy Now</Button>
                 </div>
                 <div className='w-full h-full flex flex-col justify-center items-center p-5'>
-                    <img src={user.photoURL} alt="userImage" />
-                    <h4>Name: {user.displayName}</h4> <br />
+                    <img src={user.photoURL} alt="userImage" className='w-52 h-52' />
+                    <h3>Name: {user.displayName}</h3> <br />
                     <p>Email: {user.email}</p>
                 </div>
             </div>
