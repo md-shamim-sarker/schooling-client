@@ -2,7 +2,7 @@
 ## Schooling.com
 
 # Project Live Preview:
-##
+## https://schooling-12a8c.web.app/
 
 # Some features of this project
 - 4 types of authentication system
@@ -15,6 +15,7 @@
 - Include side nav and courses cards in Courses page
 - Add price, ratings, likes in each course card
 - Use private route
+- Use active route
 - Use Email Verification
 
 # Some used technologies and libraries

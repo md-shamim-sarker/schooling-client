@@ -2,13 +2,13 @@ import React, {useContext} from 'react';
 import {AuthContext} from '../../contexts/UserContext';
 
 const User = () => {
-    const {user} = useContext(AuthContext);
+    const {user, isDark} = useContext(AuthContext);
 
     return (
-        <div>
+        <div className={isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}>
             {
                 user?.uid
-                    ? <div className='w-full flex flex-col justify-center items-center text-center my-10'>
+                    ? <div className='w-full flex flex-col justify-center items-center text-center py-10'>
                         <h2>User Details</h2> <hr />
                         <img src={user.photoURL} alt="user_photo" className='w-40 h-40 rounded-full mb-8' />
                         <h4>

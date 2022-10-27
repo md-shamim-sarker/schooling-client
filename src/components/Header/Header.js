@@ -36,10 +36,10 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div className='hidden lg:flex items-center gap-x-3 text-xl'>
-                    <NavLink to={"/home"} className="hover:underline-offset-4">Home</NavLink>
-                    <NavLink to={"/courses"} className="hover:underline-offset-4">Courses</NavLink>
-                    <NavLink to={"/faq"} className="hover:underline-offset-4">FAQ</NavLink>
-                    <NavLink to={"/blog"} className="hover:underline-offset-4">Blog</NavLink>
+                    <NavLink to={"/home"} className={({isActive}) => isActive ? 'text-blue-700 underline' : 'text-violet-700'}>Home</NavLink>
+                    <NavLink to={"/courses"} className={({isActive}) => isActive ? 'text-blue-700 underline' : 'text-violet-700'}>Courses</NavLink>
+                    <NavLink to={"/faq"} className={({isActive}) => isActive ? 'text-blue-700 underline' : 'text-violet-700'}>FAQ</NavLink>
+                    <NavLink to={"/blog"} className={({isActive}) => isActive ? 'text-blue-700 underline' : 'text-violet-700'}>Blog</NavLink>
                 </div>
                 <div className='flex items-center gap-x-2 lg:gap-x-5'>
 
@@ -55,7 +55,7 @@ const Header = () => {
 
                     {
                         user?.uid
-                            ? <NavLink to={"/user"}><img src={user.photoURL} alt="user_photo" className='w-8 h-8 rounded-full' title={user.displayName} /></NavLink>
+                            ? <NavLink to={"/user"}><img src={user.photoURL} alt="photoURL" className='w-8 h-8 rounded-full' title={user.displayName} /></NavLink>
                             : ""
                     }
 
