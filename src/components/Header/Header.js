@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import logo from '../../assets/logo.png';
-import {FaBars, FaMoon, FaSun} from 'react-icons/fa';
+import {FaBars, FaMoon, FaSun, FaUser} from 'react-icons/fa';
 import {Drawer, ButtonToolbar, IconButton, Button} from 'rsuite';
 import {AuthContext} from '../../contexts/UserContext';
 
@@ -55,7 +55,11 @@ const Header = () => {
 
                     {
                         user?.uid
-                            ? <NavLink to={"/user"}><img src={user.photoURL} alt="photoURL" className='w-8 h-8 rounded-full' title={user.displayName} /></NavLink>
+                            ? user?.photoURL
+                                ? <NavLink to={"/user"}><img src={user?.photoURL} alt="photoURL" className='w-8 h-8 rounded-full' title={user?.displayName} /></NavLink>
+                                : <NavLink to={"/user"}>
+                                    <FaUser className='w-6 h-6 rounded-full border' title={user?.displayName}></FaUser>
+                                </NavLink>
                             : ""
                     }
 

@@ -3,6 +3,7 @@ import {useLoaderData} from 'react-router-dom';
 import {Button} from 'rsuite';
 import {AuthContext} from '../../contexts/UserContext';
 import Swal from 'sweetalert2';
+import {FaUser} from 'react-icons/fa';
 
 const Checkout = () => {
     const course = useLoaderData();
@@ -29,7 +30,11 @@ const Checkout = () => {
                         <Button onClick={alertHandler} appearance='primary'>Buy Now</Button>
                     </div>
                     <div className='w-full h-full flex flex-col justify-center items-center p-5'>
-                        <img src={user.photoURL} alt="userImage" className='w-52 h-52' />
+                        {
+                            user?.photoURL
+                                ? <img src={user.photoURL} alt="userImage" className='w-52 h-52' />
+                                : <FaUser className='w-52 h-52 border'></FaUser>
+                        }
                         <h3>Name: {user.displayName}</h3> <br />
                         <p>Email: {user.email}</p>
                     </div>
