@@ -30,8 +30,10 @@ const Header = () => {
         <div className={isDark ? 'bg-gray-800 text-gray-100' : 'bg-blue-100 text-gray-900'}>
             <div className='w-full px-2 py-2 lg:w-11/12 mx-auto flex items-center justify-between'>
                 <div className='flex items-center gap-x-1 lg:gap-x-3'>
-                    <img src={logo} alt="logo" className='w-10 lg:w-16' />
-                    <h1 className='text-base lg:text-2xl font-bold'>SCHOOLING.COM</h1>
+                    <NavLink to={"/home"} className="flex items-center gap-x-1 lg:gap-x-3 hover:no-underline">
+                        <img src={logo} alt="logo" className='w-10 lg:w-16' />
+                        <h1 className='text-base lg:text-2xl font-bold'>SCHOOLING.COM</h1>
+                    </NavLink>
                 </div>
                 <div className='hidden lg:flex items-center gap-x-3 text-xl'>
                     <NavLink to={"/home"} className="hover:underline-offset-4">Home</NavLink>
