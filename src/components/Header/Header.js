@@ -6,8 +6,7 @@ import {Drawer, ButtonToolbar, IconButton, Button} from 'rsuite';
 import {AuthContext} from '../../contexts/UserContext';
 
 const Header = () => {
-    const {user, logOut, setUser} = useContext(AuthContext);
-    // console.log(user);
+    const {user, logOut, setUser, darkHandler, isDark} = useContext(AuthContext);
 
     const logOutHandler = () => {
         logOut()
@@ -28,7 +27,7 @@ const Header = () => {
     };
 
     return (
-        <div className='bg-blue-100 py-1'>
+        <div className={isDark ? 'bg-gray-800 text-gray-100' : 'bg-blue-100 text-gray-900'}>
             <div className='w-full px-2 py-2 lg:w-11/12 mx-auto flex items-center justify-between'>
                 <div className='flex items-center gap-x-1 lg:gap-x-3'>
                     <img src={logo} alt="logo" className='w-10 lg:w-16' />
@@ -41,8 +40,9 @@ const Header = () => {
                     <NavLink to={"/blog"} className="hover:underline-offset-4">Blog</NavLink>
                 </div>
                 <div className='flex items-center gap-x-2 lg:gap-x-5'>
+
                     <label htmlFor="dark-light" className="inline-flex items-center p-1 cursor-pointer bg-gray-300 text-gray-800 rounded-3xl">
-                        <input id="dark-light" type="checkbox" className="hidden peer" />
+                        <input onClick={darkHandler} id="dark-light" type="checkbox" className="hidden peer" />
                         <span className="px-1 py-1 bg-yellow-600 peer-checked:bg-gray-300 rounded-3xl">
                             <FaSun></FaSun>
                         </span>

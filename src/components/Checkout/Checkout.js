@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 const Checkout = () => {
     const course = useLoaderData();
-    const {user} = useContext(AuthContext);
+    const {user, isDark} = useContext(AuthContext);
     const {title, brief, image} = course;
 
     const alertHandler = () => {
@@ -18,19 +18,21 @@ const Checkout = () => {
     };
 
     return (
-        <div className='w-4/5 mx-auto my-10'>
-            <h2 className='text-center my-5'>Checkout Page</h2>
-            <div className='flex flex-col lg:flex-row gap-5 justify-between'>
-                <div className='w-full h-full flex flex-col justify-center items-center p-5'>
-                    <img src={image.thumbnail} alt="image_thumbnail" className='w-52 h-52' />
-                    <h3>{title} <br /></h3>
-                    <p className='my-5'>{brief}</p>
-                    <Button onClick={alertHandler} appearance='primary'>Buy Now</Button>
-                </div>
-                <div className='w-full h-full flex flex-col justify-center items-center p-5'>
-                    <img src={user.photoURL} alt="userImage" className='w-52 h-52' />
-                    <h3>Name: {user.displayName}</h3> <br />
-                    <p>Email: {user.email}</p>
+        <div className={isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}>
+            <div className='w-4/5 mx-auto py-10'>
+                <h2 className='text-center my-5'>Checkout Page</h2>
+                <div className='flex flex-col lg:flex-row gap-5 justify-between'>
+                    <div className='w-full h-full flex flex-col justify-center items-center p-5'>
+                        <img src={image.thumbnail} alt="image_thumbnail" className='w-52 h-52' />
+                        <h3>{title} <br /></h3>
+                        <p className='my-5 text-center'>{brief}</p>
+                        <Button onClick={alertHandler} appearance='primary'>Buy Now</Button>
+                    </div>
+                    <div className='w-full h-full flex flex-col justify-center items-center p-5'>
+                        <img src={user.photoURL} alt="userImage" className='w-52 h-52' />
+                        <h3>Name: {user.displayName}</h3> <br />
+                        <p>Email: {user.email}</p>
+                    </div>
                 </div>
             </div>
         </div>

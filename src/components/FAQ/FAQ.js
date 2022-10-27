@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from '../../contexts/UserContext';
 
 
 const FAQ = () => {
+    const {isDark} = useContext(AuthContext);
     return (
-        <section className="bg-blue-50 text-gray-600">
+        <section className={isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}>
             <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
                 <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">How it works</p>
                 <h2 className="mb-12 text-4xl leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>

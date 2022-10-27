@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 const SideNav = ({course}) => {
     const {id, title} = course;
     return (
-        <div>
+        <div className="text-center">
             <NavLink to={`/course/id/${id}`}>{title}</NavLink> <hr />
         </div>
     );

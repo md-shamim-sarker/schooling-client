@@ -9,10 +9,15 @@ export const AuthContext = createContext();
 const UserContext = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isDark, setIsDark] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
+
+    const darkHandler = () => {
+        setIsDark(!isDark);
+    };
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -52,7 +57,6 @@ const UserContext = ({children}) => {
         return signOut(auth);
     };
 
-    // Very special part (Manage Users > Get the currently signed-in user)
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -74,7 +78,9 @@ const UserContext = ({children}) => {
         signInWithGoogle,
         signInWithGithub,
         signInWithFacebook,
-        sendUserEmailVerification
+        sendUserEmailVerification,
+        darkHandler,
+        isDark
     };
     return (
         <AuthContext.Provider value={authInfo}>
