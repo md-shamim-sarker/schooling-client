@@ -1,31 +1,46 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
-import banner from '../../assets/schooling.svg';
-import {AuthContext} from '../../contexts/UserContext';
 
 const Home = () => {
-    const {isDark} = useContext(AuthContext);
-
     return (
-        <section className={isDark ? 'bg-gray-800 text-gray-100' : 'bg-gray-100 text-gray-800'}>
-            <div className="container flex flex-col-reverse justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-                <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                    <h2 className="text-4xl font-bold leading-none">
-                        Shamim Sarker Home Page
-                    </h2>
-                    <p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
-                        <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque ligula sem
+        < section
+            className="relative bg-[url(https://www.netscribes.com/wp-content/uploads/2019/06/Technology-Watch.jpg)] bg-cover bg-center bg-no-repeat" >
+
+            <div className="absolute inset-0 bg-black/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-black/75"></div>
+
+            <div
+                className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+            >
+                <div className="max-w-xl text-left">
+                    <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
+                        WELCOME TO
+                        <strong className="block font-extrabold text-rose-700">
+                            SCHOOLING.COM
+                        </strong>
+                    </h1>
+
+                    <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-white">
+                        The most popular online platform for learning in Bangladesh. Schooling.com confirms quality teaching in different topics.
                     </p>
-                    <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                        <NavLink to={"/"} className="px-8 py-3 text-lg font-medium rounded bg-violet-400 text-gray-900">Suspendisse</NavLink>
-                        <NavLink to={"/"} className="px-8 py-3 text-lg font-medium border rounded border-gray-100">Malesuada</NavLink>
+
+                    <div className="mt-8 flex flex-wrap gap-4 text-center">
+                        <NavLink
+                            to={"/home"}
+                            className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+                        >
+                            Get Started
+                        </NavLink>
+
+                        <NavLink
+                            to={"/home"}
+                            className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+                        >
+                            Learn More
+                        </NavLink>
                     </div>
                 </div>
-                <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                    <img src={banner} alt="banner_img" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
-                </div>
             </div>
-        </section>
+        </section >
     );
 };
 

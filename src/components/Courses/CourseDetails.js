@@ -2,6 +2,7 @@ import React, {createRef, useContext} from 'react';
 import {FaStar, FaThumbsUp} from 'react-icons/fa';
 import {NavLink, useLoaderData} from 'react-router-dom';
 import Pdf from "react-to-pdf";
+import {Button} from 'rsuite';
 import {AuthContext} from '../../contexts/UserContext';
 
 const ref = createRef();
@@ -40,6 +41,12 @@ const CourseDetails = () => {
                             </strong>
                         </h1>
 
+                        <div className='mt-6'>
+                            <Pdf targetRef={ref} filename="course_details.pdf" options={options}>
+                                {({toPdf}) => <Button appearance='primary' onClick={toPdf}>Download Course Details</Button>}
+                            </Pdf>
+                        </div>
+
                         <p className='my-3 text-white'> {brief}</p>
 
                         <div className='flex justify-center lg:justify-start items-center gap-x-2 text-white'>
@@ -57,21 +64,6 @@ const CourseDetails = () => {
 
                         <h5 className='text-white mt-3'>Price: ${price}</h5>
                         <h5 className='text-white mt-3'>Already Enrolled {enrolled}</h5>
-
-                        <div className="mt-4 flex flex-wrap gap-4 text-center">
-                            <NavLink
-                                to={`/checkout/id/${id}`}
-                                className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto hover:no-underline hover:text-white">
-                                Get Premium
-                            </NavLink>
-
-                            <div className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto">
-
-                                <Pdf targetRef={ref} filename="course_details.pdf" options={options}>
-                                    {({toPdf}) => <button onClick={toPdf}>Download Course Details</button>}
-                                </Pdf>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -88,6 +80,14 @@ const CourseDetails = () => {
                         {
                             features.map((feature, index) => <li key={index}>{feature}</li>)
                         }
+                    </div>
+
+                    <div className='pb-10'>
+                        <NavLink
+                            to={`/checkout/id/${id}`}
+                            className="rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto hover:no-underline hover:text-white">
+                            Get Premium Access
+                        </NavLink>
                     </div>
                 </div>
             </div>

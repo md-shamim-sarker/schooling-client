@@ -10,39 +10,35 @@ const Courses = () => {
     return (
         <div className={isDark ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}>
             <section
-                className="relative bg-[url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)] bg-cover bg-center bg-no-repeat"
-            >
-                <div
-                    className="absolute inset-0 bg-black/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-black/75"
-                ></div>
+                className="relative bg-[url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)] bg-cover bg-center bg-no-repeat">
+
+                <div className="absolute inset-0 bg-black/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-black/75"></div>
 
                 <div
                     className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
                 >
-                    <div className="max-w-xl text-center sm:text-left">
+                    <div className="max-w-xl text-left">
                         <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
-                            Let us find your
-
+                            SUCCESS DEFINED IN
                             <strong className="block font-extrabold text-rose-700">
-                                Forever Home.
+                                A DIFFERENT WAY
                             </strong>
                         </h1>
 
                         <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-white">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-                            tenetur fuga ducimus numquam ea!
+                            The most popular online platform for learning in Bangladesh. Schooling.com confirms quality teaching in different topics.
                         </p>
 
                         <div className="mt-8 flex flex-wrap gap-4 text-center">
                             <NavLink
-                                to={"/"}
+                                to={"/courses"}
                                 className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                             >
                                 Get Started
                             </NavLink>
 
                             <NavLink
-                                to={"/"}
+                                to={"/courses"}
                                 className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
                             >
                                 Learn More
@@ -51,10 +47,10 @@ const Courses = () => {
                     </div>
                 </div>
             </section>
-            <div className='w-11/12 mx-auto flex flex-col lg:flex-row gap-5 p-10'>
+            <div className='w-11/12 mx-auto flex flex-col lg:flex-row gap-5 lg:p-10'>
 
                 {/* Courses Lists */}
-                <div className='w-full lg:w-1/4 border rounded-md text-lg'>
+                <div className='w-full lg:w-1/4 border rounded-md text-lg pt-7'>
                     <h2 className='text-center'>Courses List</h2><hr />
                     {
                         courses.map(course => <SideNav
