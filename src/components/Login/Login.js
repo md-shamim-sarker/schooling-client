@@ -2,22 +2,24 @@ import React, {useContext, useState} from 'react';
 import {FaFacebook, FaGithub, FaGoogle} from 'react-icons/fa';
 import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import {AuthContext} from '../../contexts/UserContext';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [message, setMessage] = useState("");
     const {
-        signIn, signInWithGoogle, logOut,
-        setUser, signInWithGithub,
-        signInWithFacebook, isDark
+        isDark,
+        signIn,
+        signInWithGithub,
+        signInWithGoogle,
+        signInWithFacebook,
     } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const notify = () => toast("Your mail isn't verified. Please verify your email first.");
+    // const notify = () => toast("Your mail isn't verified. Please verify your email first.");
 
 
     const handleSubmit = (event) => {
@@ -28,15 +30,15 @@ const Login = () => {
         signIn(email, password)
             .then((result) => {
                 const user = result.user;
-                if(!user.emailVerified) {
-                    notify();
-                    logOut().then(() => {
-                        setUser(null);
-                    }).catch((error) => {
-                        console.log(error);
-                    });
-                    return;
-                }
+                // if(!user.emailVerified) {
+                //     notify();
+                //     logOut().then(() => {
+                //         setUser(null);
+                //     }).catch((error) => {
+                //         console.log(error);
+                //     });
+                //     return;
+                // }
                 console.log(user);
                 form.reset();
                 navigate(from, {replace: true});

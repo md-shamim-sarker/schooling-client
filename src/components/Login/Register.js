@@ -1,15 +1,18 @@
 import React, {useContext, useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import {AuthContext} from '../../contexts/UserContext';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [message, setMessage] = useState("");
+    const [errEmail, setErrEmail] = useState('');
+    const [errPass, setErrPass] = useState('');
+    const navigate = useNavigate();
 
-    const {createUser, updateUser, logOut, setUser, sendUserEmailVerification, isDark} = useContext(AuthContext);
+    const {createUser, updateUser, isDark} = useContext(AuthContext);
 
-    const notify = () => toast("A confirmation mail send to your account. Please, confirm!!");
+    // const notify = () => toast("A confirmation mail send to your account. Please, confirm!!");
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,26 +30,33 @@ const Register = () => {
                     displayName: fullName,
                     photoURL: photoURL
                 }).then(() => {
+                    navigate("/login");
                 }).catch((error) => {
                     console.log(error.message);
                 });
 
-                logOut().then(() => {
-                    setUser(null);
-                }).catch((error) => {
-                    console.log(error);
-                });
+                // logOut().then(() => {
+                //     setUser(null);
+                // }).catch((error) => {
+                //     console.log(error);
+                // });
 
-                sendUserEmailVerification().then(() => {
-                    notify();
-                });
+                // sendUserEmailVerification().then(() => {
+                //     notify();
+                // });
 
-                form.reset();
+                // form.reset();
                 setMessage("Successfully Created Account.");
             })
-            .catch((error) => {
-                console.log(error);
-                setMessage("This email already in use.");
+            .catch((err) => {
+                console.log(err.message);
+                if(err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+                    setErrEmail('');
+                    setErrPass('Password should be at least 6 characters.');
+                } else if(err.message === 'Firebase: Error (auth/email-already-in-use).') {
+                    setErrPass('');
+                    setErrEmail('This authentication email already-in-use.');
+                }
             });
     };
 
@@ -68,6 +78,7 @@ const Register = () => {
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block text-gray-400">Email</label>
                         <input type="email" name="email" id="email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-600 focus:border-violet-400" />
+                        <small className='text-red-600'>{errEmail}</small>
                     </div>
 
                     <div className="space-y-1 text-sm">
@@ -78,6 +89,7 @@ const Register = () => {
                     <div className="space-y-1 text-sm">
                         <label htmlFor="confirmPassword" className="block text-gray-400">Password Confirmation</label>
                         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Password Confirmation" className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-200 text-gray-600 focus:border-violet-400" />
+                        <small className='text-red-600'>{errPass}</small>
                     </div>
                     <div>{message}</div>
                     <button type='submit' className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400 hover:bg-violet-500">Create an account</button>
